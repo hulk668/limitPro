@@ -1,0 +1,17 @@
+# ---------------------------------------------------------------------------
+# pnpm 工作区配置（pnpm 10+ 起，包管理与构建脚本相关设置统一放在此处）
+# ---------------------------------------------------------------------------
+
+# 依赖的构建脚本（postinstall）默认被拦截，需显式放行。
+# electron 的 postinstall 负责下载 Electron 二进制；不放行会导致 `electron .` 无法启动。
+allowBuilds:
+  electron: true
+  esbuild: true
+  sharp: true
+  '@parcel/watcher': true
+
+# 使用扁平化 node_modules（等价于 npm 的布局）。
+# 原因：Next.js `output: 'standalone'` 需要追踪并复制真实依赖文件，
+#       且 electron-builder 对符号链接布局支持不够可靠，扁平化可同时满足两者。
+# 若不需要 Electron 打包，可改为 isolated 以恢复 pnpm 默认的严格依赖隔离。
+nodeLinker: hoisted

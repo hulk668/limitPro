@@ -1,0 +1,42 @@
+# dependencies
+/node_modules
+/.pnp
+.pnp.*
+.pnpm-store/
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+/release
+/release-*/
+/dist
+
+# local data (账号 / 验证码历史 / 密钥环 —— 绝不入库)
+/.data/
+
+# env
+.env
+.env.local
+.env*.local
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log
+
+# system
+.DS_Store
+Thumbs.db
+*.tsbuildinfo
+next-env.d.ts
+
+# 构建 / 调试产生的中间目录（不建议入库）
+.next.broken-*/
+.next.old-*/
+.next.standalone-tmp/
+/_tmp_*/
+_*.log

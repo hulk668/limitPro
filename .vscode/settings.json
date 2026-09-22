@@ -1,0 +1,29 @@
+{
+  // 构建产物目录不要参与 IDE 的文件监听 / 全局搜索。
+  //
+  // 这不仅是性能问题，更是**打包能不能成功**的问题：
+  // IDE 的监听器会以「不含 FILE_SHARE_DELETE」的方式持有内部文件句柄，
+  // 而 electron-builder 每次构建前要先清空输出目录（EnsureEmptyDir），
+  // 只要有一个文件被这样占着，删除就会失败并报出指向完全错误方向的错误：
+  //
+  //   ⨯ remove ...\release\win-unpacked\resources\app.asar:
+  //       The process cannot access the file because it is being used by another process.
+  //
+  // 下面的排除项让 IDE 不去碰这些目录，从根本上消除这类占用。
+  "files.watcherExclude": {
+    "**/release/**": true,
+    "**/release-*/**": true,
+    "**/.next/**": true,
+    "**/node_modules/**": true,
+    "**/.data/**": true,
+    "**/_tmp_*/**": true
+  },
+  "search.exclude": {
+    "**/release": true,
+    "**/release-*": true,
+    "**/.next": true,
+    "**/node_modules": true,
+    "**/.data": true,
+    "**/_tmp_*": true
+  }
+}

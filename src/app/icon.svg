@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="limitPro">
+  <defs>
+    <linearGradient id="lp" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1f6feb" />
+      <stop offset="100%" stop-color="#a371f7" />
+    </linearGradient>
+  </defs>
+  <!-- 与界面侧边栏的品牌方块保持同一套配色（primary → chart-4 渐变） -->
+  <rect width="64" height="64" rx="14" fill="url(#lp)" />
+  <path
+    d="M20 17h5.4v23.4H36V46H20V17Zm17.6 0h11.2c5.3 0 8.9 3.2 8.9 8.4 0 5.3-3.6 8.6-8.9 8.6h-5.8V46h-5.4V17Zm5.4 4.6v7.9h5.1c2.3 0 3.7-1.5 3.7-3.9 0-2.4-1.4-3.9-3.7-3.9h-5.1Z"
+    fill="#ffffff"
+  />
+</svg>

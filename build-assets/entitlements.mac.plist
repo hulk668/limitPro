@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  macOS 权限声明（entitlements）—— 本项目是「不签名 / ad-hoc 签名」路线，这几个键缺一不可。
+
+  背景：`mac.identity` 设为 "-" 表示 ad-hoc 签名（自签名、没有 Apple Team ID）。
+  而 Electron 预编译发行的 Framework 是**带 Apple Team ID 签名**的，
+  二者 Team ID 不一致时，macOS 的库校验会直接判定加载非法 → 应用启动即崩溃。
+  官方给的解法就是声明 com.apple.security.cs.disable-library-validation
+  （比关掉整个 hardenedRuntime 更安全，因为硬化运行时仍然生效）。
+
+  另外三个是 Electron 运行时（V8 / Chromium）本身就需要的能力，属于 Electron 打包的标配。
+  参考：https://www.electron.build/docs/features/code-signing/code-signing-mac
+-->
+<plist version="1.0">
+<dict>
+  <!-- V8 需要 JIT -->
+  <key>com.apple.security.cs.allow-jit</key>
+  <true/>
+  <!-- V8 会产生可写的可执行内存 -->
+  <key>com.apple.security.cs.allow-unsigned-executable-memory</key>
+  <true/>
+  <!-- Chromium 内部依赖 DYLD_* 环境变量注入 -->
+  <key>com.apple.security.cs.allow-dyld-environment-variables</key>
+  <true/>
+  <!-- ad-hoc 签名必需：放行 Team ID 不一致的 Electron 框架 -->
+  <key>com.apple.security.cs.disable-library-validation</key>
+  <true/>
+</dict>
+</plist>

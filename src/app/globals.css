@@ -1,0 +1,208 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+/* ==========================================================================
+   limitPro 设计令牌（shadcn/ui 规范）
+   深色配色沿用 GitHub Dark 风格，界面默认以 .dark 呈现（桌面工具无浅色需求，
+   但仍保留 :root 浅色值以便后续扩展）。
+   ========================================================================== */
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* 业务语义色（非 shadcn 标准令牌，供状态徽标 / 提示条使用） */
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-info: var(--info);
+  --color-info-foreground: var(--info-foreground);
+
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB',
+    'Microsoft YaHei', 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace;
+}
+
+/* ------------------------------- 浅色（备用） ------------------------------ */
+
+:root {
+  --radius: 0.625rem;
+
+  --background: #ffffff;
+  --foreground: #1f2328;
+  --card: #ffffff;
+  --card-foreground: #1f2328;
+  --popover: #ffffff;
+  --popover-foreground: #1f2328;
+  --primary: #0969da;
+  --primary-foreground: #ffffff;
+  --secondary: #f6f8fa;
+  --secondary-foreground: #1f2328;
+  --muted: #f6f8fa;
+  --muted-foreground: #656d76;
+  --accent: #f3f4f6;
+  --accent-foreground: #1f2328;
+  --destructive: #cf222e;
+  --destructive-foreground: #ffffff;
+  --border: #d0d7de;
+  --input: #d0d7de;
+  --ring: #0969da;
+
+  --success: #1a7f37;
+  --success-foreground: #ffffff;
+  --warning: #9a6700;
+  --warning-foreground: #ffffff;
+  --info: #0969da;
+  --info-foreground: #ffffff;
+
+  --chart-1: #0969da;
+  --chart-2: #1a7f37;
+  --chart-3: #9a6700;
+  --chart-4: #8250df;
+  --chart-5: #cf222e;
+
+  --sidebar: #f6f8fa;
+  --sidebar-foreground: #1f2328;
+  --sidebar-primary: #0969da;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #eaeef2;
+  --sidebar-accent-foreground: #1f2328;
+  --sidebar-border: #d0d7de;
+  --sidebar-ring: #0969da;
+}
+
+/* -------------------------- 深色（应用默认主题） -------------------------- */
+
+.dark {
+  --background: #0d1117;
+  --foreground: #e6edf3;
+  --card: #161b22;
+  --card-foreground: #e6edf3;
+  --popover: #1c2128;
+  --popover-foreground: #e6edf3;
+  --primary: #1f6feb;
+  --primary-foreground: #ffffff;
+  --secondary: #22272e;
+  --secondary-foreground: #e6edf3;
+  --muted: #1c2128;
+  --muted-foreground: #9198a1;
+  --accent: #1c2128;
+  --accent-foreground: #e6edf3;
+  --destructive: #f85149;
+  --destructive-foreground: #ffffff;
+  --border: #30363d;
+  --input: #30363d;
+  --ring: #58a6ff;
+
+  --success: #3fb950;
+  --success-foreground: #0d1117;
+  --warning: #d29922;
+  --warning-foreground: #0d1117;
+  --info: #58a6ff;
+  --info-foreground: #0d1117;
+
+  --chart-1: #58a6ff;
+  --chart-2: #3fb950;
+  --chart-3: #d29922;
+  --chart-4: #a371f7;
+  --chart-5: #f85149;
+
+  --sidebar: #12181f;
+  --sidebar-foreground: #e6edf3;
+  --sidebar-primary: #1f6feb;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #1c2128;
+  --sidebar-accent-foreground: #e6edf3;
+  --sidebar-border: #30363d;
+  --sidebar-ring: #58a6ff;
+}
+
+/* ------------------------------- 基础样式 -------------------------------- */
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html,
+  body {
+    height: 100%;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    /* 桌面端整屏布局，滚动交给内容区自己处理 */
+    overflow: hidden;
+  }
+
+  /* 细滚动条，贴合深色桌面观感 */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--secondary);
+    border-radius: 6px;
+    border: 2px solid var(--background);
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: color-mix(in oklab, var(--muted-foreground) 45%, transparent);
+  }
+}
+
+/* ------------------------------ 业务辅助类 ------------------------------- */
+
+@layer components {
+  /* 生成结果 / 验证码等需要等宽展示的文本 */
+  .text-code {
+    @apply font-mono text-xs tracking-wider;
+  }
+
+  /* 主内容区滚动容器 */
+  .scroll-area-y {
+    @apply flex-1 overflow-y-auto;
+  }
+}
